@@ -1,0 +1,282 @@
+$mobile-display-size: 768px;
+$white-color: #fff;
+$black-color: hsl(0, 0%, 0%);
+$gray-color: hsl(0, 0%, 48%);
+$cyan-color: hsl(176, 50%, 47%);
+$dark-cyan-color: hsl(176, 72%, 28%);
+
+body {
+  background-image: url("../images/image-hero-desktop.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  font-family: "Commissioner";
+
+  @media screen and (max-width: $mobile-display-size) {
+    background-image: url("../images/image-hero-mobile.jpg");
+  }
+}
+
+@mixin toggler-image($image-url) {
+  background-image: url($image-url);
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+@mixin card-template {
+  .card {
+    width: 50%;
+    @media screen and (max-width: $mobile-display-size) {
+      width: 90%;
+    }
+  }
+
+  .card-title, .modal-title {
+    font-weight: 700;
+  }
+
+  .card-text, .modal-text {
+    color: $gray-color;
+    font-weight: 400;
+  }
+}
+
+@mixin button-template {
+  background-color: $cyan-color;
+  border-radius: 40px;
+  color: $white-color;
+  font-weight: 500;
+
+  &:hover:enabled {
+    background-color: $dark-cyan-color;
+  }
+}
+
+#header {
+  font-weight: 500;
+
+  .navbar-toggler {
+    border: none;
+    width: auto;
+    height: 15px;
+
+    &:focus, &:active {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  .navbar-toggler[aria-expanded='false'] {
+    @include toggler-image("../images/icon-hamburger.svg");
+  }
+
+  .navbar-toggler[aria-expanded='true'] {
+    @include toggler-image("../images/icon-close-menu.svg");
+  }
+
+  .navbar-collapse {
+    @media screen and (max-width: $mobile-display-size) {
+      background-color: $white-color;
+      border-radius: 10px;
+    }
+  }
+
+  .nav-link {
+    color: $white-color;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: $mobile-display-size) {
+      color: $black-color;
+    }
+  }
+}
+
+#title {
+  @include card-template;
+
+  .card-img-top {
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+  }
+
+  .btn {
+    border-radius: 40px;
+    height: 56px;
+  }
+
+  .btn-light {
+    color: $gray-color;
+    font-weight: 500;
+
+    &:hover {
+      svg {
+        opacity: 50%;
+      }
+    }
+
+    @media screen and (max-width: $mobile-display-size) {
+      width: 56px;
+    }
+  }
+
+  .back-project-button {
+    @include button-template;
+
+    @media screen and (max-width: $mobile-display-size) {
+      width: 100%;
+    }
+  }
+
+  .bookmarked {
+    color: $dark-cyan-color;
+  }
+}
+
+#status {
+  @include card-template;
+
+  .splitter {
+    border-left: solid 1px;
+    border-right: solid 1px;
+
+    & {
+      border-color: $gray-color;
+    }
+
+    @media screen and (max-width: $mobile-display-size) {
+      border-left: none;
+      border-right: none;
+      border-top: solid 1px;
+      border-bottom: solid 1px;
+      width: 25%;
+
+      & {
+        border-color: $gray-color;
+      }
+    }
+  }
+
+  .progress-bar {
+    background-color: $cyan-color;
+    border-radius: 40px;
+    width: 90%;
+  }
+}
+
+#about {
+  @include card-template;
+
+  .card {
+    span {
+      color: $gray-color;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .card {
+      width: 90%;
+    }
+
+    .cyan-text {
+      color: $cyan-color;
+    }
+
+    .select-button {
+      @include button-template;
+
+      height: 40px;
+    }
+  }
+
+  .out-of-stock {
+    opacity: 50%;
+  }
+}
+
+#back-project {
+  @include card-template;
+
+  span {
+    color: $gray-color;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  .card-footer {
+    background-color: $white-color;
+  }
+
+  .cyan-text {
+    color: $cyan-color;
+  }
+
+  .form-check-input:checked {
+    background: $cyan-color;
+  }
+
+  .selected {
+    border: 3px solid;
+    border-color: $cyan-color;
+  }
+
+  .form-control {
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+
+    @media screen and (max-width: $mobile-display-size) {
+      width: 75%;
+    }
+  }
+
+  .input-group-text {
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    width: 25%;
+  }
+
+  .continue-button {
+    @include button-template;
+
+    height: 40px;
+
+    @media screen and (max-width: $mobile-display-size) {
+      width: 100%;
+    }
+  }
+
+  .out-of-stock {
+    opacity: 50%;
+  }
+}
+
+#success {
+  @include card-template;
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .close-button {
+    @include button-template;
+
+    height: 40px;
+    width: 25%;
+  }
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+
+  a {
+    color: hsl(228, 45%, 44%);
+  }
+}
